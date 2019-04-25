@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/java-quotes.iml" filepath="$PROJECT_DIR$/.idea/java-quotes.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/java-quotes.main.iml" filepath="$PROJECT_DIR$/.idea/modules/java-quotes.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/java-quotes.test.iml" filepath="$PROJECT_DIR$/.idea/modules/java-quotes.test.iml" />
     </modules>
   </component>
 </project>
