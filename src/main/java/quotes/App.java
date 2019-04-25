@@ -6,9 +6,8 @@ package quotes;
 import com.google.gson.Gson;
 
 //import java.lang.annotation.Annotation;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import javax.xml.bind.SchemaOutputResolver;
+import java.io.*;
 import java.lang.reflect.Field;
 //import java.lang.reflect.Method;
 
@@ -24,9 +23,22 @@ public class App {
     public static void jsonReader() {
         BufferedReader reader = null;
         try {
-            File file = new file ("./quotes.json");
-            reader = new BufferedReader(new FileReader(quotes));
+            File file = new file ("../../../quotes.json");
+            reader = new BufferedReader(new FileReader("../../../quotes.json"));
+            Gson gson = new Gson();
+            Quote[] resultingQuote = gson.fromJson(reader, Quote[].class);
+
+            System.out.println(resultingQuote[0]);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
+        finally{
+            try {
+                reader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+    }
     }
 
 //    public static void readDom() {
