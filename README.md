@@ -5,7 +5,7 @@ Trey Herndon and Jessica Zuchowski
 
 ## Feature Task:
 
-This app was created in Java and utilizes Gson to convert JSON files to Java, in this case to return a list of author and quote objects from the array in our .json file.
+This app was created in Java and utilizes Gson to convert JSON files to Java, in this case to return a random author and quote object from the array in our .json file. To use, simply run App.main() from your CLI. 
 
 ## Dependencies:
 
