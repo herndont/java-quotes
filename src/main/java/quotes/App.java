@@ -6,29 +6,29 @@ package quotes;
 import com.google.gson.Gson;
 
 //import java.lang.annotation.Annotation;
-import javax.xml.bind.SchemaOutputResolver;
 import java.io.*;
-import java.lang.reflect.Field;
-//import java.lang.reflect.Method;
+import java.util.Random;
 
 public class App {
 
     public static void main(String[] args) {
-
-            gsoningItUp();
+        Quote showQuote = jsonReader();
+        System.out.println(showQuote);
 
     }
 
     //need to write a method to read the quotes file
-    public static void jsonReader() {
+    public static Quote jsonReader() {
         BufferedReader reader = null;
         try {
-            File file = new file ("../../../quotes.json");
-            reader = new BufferedReader(new FileReader("../../../quotes.json"));
+            reader = new BufferedReader(new FileReader("quotes.json"));
             Gson gson = new Gson();
             Quote[] resultingQuote = gson.fromJson(reader, Quote[].class);
 
-            System.out.println(resultingQuote[0]);
+            Random rand = new Random();
+            int num = rand.nextInt(resultingQuote.length);
+            return resultingQuote[num];
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -39,58 +39,6 @@ public class App {
                 e.printStackTrace();
             }
     }
+        return null;
     }
-
-//    public static void readDom() {
-//        BufferedReader reader = null;
-//        try {
-    //        File file = new file (filepath)
-//            reader = new BufferedReader(new FileReader(file));
-//            Gson gson = new GsonBuilder().create();
-//            Person[] people = gson.fromJson(reader, Person[].class);
-//
-//            System.out.println("Object mode: " + people[0]);
-//
-//        } catch (FileNotFoundException ex) {
-//        ...
-//        } finally {
-//        ...
-//        }
-//    }
-
-//buffered reader with try/catch inside
-
-
-    public static void gsoningItUp() {
-
-        Gson gson = new Gson();
-
-        String jsonOrwell = "{\"tags\": [], \"author\": \"George Orwell\", \"likes\": \"28 likes\", \"text\": \" “If liberty means anything at all it means the right to tell people what they do not want to hear.” \"}";
-
-        Quote resultingQuote = gson.fromJson(jsonOrwell, Quote.class);
-
-        System.out.println(resultingQuote.toString());
-    }
-
-//    public static void testFields() {
-//        Quote quote = new Quote();
-//        quote.author = "George Orwell";
-//
-//        Class c = Quote.class;
-//
-//        Field[] fields = c.getFields();
-//
-//        try {
-//            Object q = fields[1].get(quote);
-//            System.out.println(q);
-//        }
-//        catch (IllegalAccessException e) {
-//            e.printStackTrace();
-//        }
-
-//        Method[] methods = c.getMethods();
-
-//        Annotation[] annots = methods[1].getAnnotations();
-//    }
-
 }
