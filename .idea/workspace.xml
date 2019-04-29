@@ -8,6 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/classes/quotes/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/quotes/App.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/quotes/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quotes/App.java" afterDir="false" />
+
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -40,6 +41,19 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="158">
               <caret line="1468" column="24" selection-start-line="1468" selection-start-column="24" selection-end-line="1468" selection-end-column="24" />
+
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="714">
+                <caret line="42" selection-start-line="42" selection-end-line="42" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -92,6 +106,7 @@
     <findStrings>
       <find>glad</find>
       <find>null</find>
+
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -107,7 +122,6 @@
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/java/quotes/Quote.java" />
         <option value="$PROJECT_DIR$/src/test/java/quotes/AppTest.java" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/main/java/quotes/rSwanson.java" />
         <option value="$PROJECT_DIR$/src/main/java/quotes/RSwanson.java" />
         <option value="$PROJECT_DIR$/quotes.json" />
@@ -120,6 +134,7 @@
     <option name="y" value="7" />
     <option name="width" value="1090" />
     <option name="height" value="1024" />
+
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -258,6 +273,7 @@
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.036945812" />
+
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -429,6 +445,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/quotes/App.java">
+
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1139">
           <caret line="69" column="58" selection-start-line="69" selection-start-column="58" selection-end-line="69" selection-end-column="58" />
@@ -460,6 +477,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="158">
           <caret line="1468" column="24" selection-start-line="1468" selection-start-column="24" selection-end-line="1468" selection-end-column="24" />
+
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="714">
+            <caret line="42" selection-start-line="42" selection-end-line="42" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
