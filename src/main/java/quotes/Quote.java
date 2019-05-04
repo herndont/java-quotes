@@ -17,5 +17,4 @@ public class Quote {
     public String toString() {
         return author + " once said: " + text;
     }
-
 }
