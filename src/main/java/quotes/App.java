@@ -20,7 +20,7 @@ public class App {
         System.out.println(showQuote);
         //quotes from API
         String apiURL = "https://ron-swanson-quotes.herokuapp.com/v2/quotes";
-
+        
             try {
                 URL url = new URL(apiURL);
                 String json = getRonJson(url);
