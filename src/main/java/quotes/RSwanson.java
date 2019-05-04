@@ -7,6 +7,5 @@ public class RSwanson {
 
         this.text = text;
     }
-
 }
 

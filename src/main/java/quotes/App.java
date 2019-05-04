@@ -67,8 +67,8 @@ public class App {
                 connection.disconnect();
             }
         }
-//buffered reader connection
 
+//buffered reader connection
     public static BufferedReader useConnectedBufferedReader(HttpURLConnection connection) throws IOException {
         InputStream inputStream = connection.getInputStream();
         InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
@@ -111,7 +111,5 @@ public class App {
         return null;
     }
 
-
         //buffered writer??
-
 }
