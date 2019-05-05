@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8b1b4418-6284-44f8-9477-363e43fb5977" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+=======
+
+>>>>>>> 0a36e90b0372b57f2ff27ee32b348abc029157fa
       <change beforePath="$PROJECT_DIR$/src/main/java/quotes/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quotes/App.java" afterDir="false" />
+
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -51,6 +56,7 @@
               <caret line="24" column="117" selection-start-line="24" selection-start-column="117" selection-end-line="24" selection-end-column="117" />
               <folding>
                 <element signature="imports" expanded="true" />
+
               </folding>
             </state>
           </provider>
@@ -58,6 +64,7 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/quotes/RSwanson.java">
+
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="34">
               <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
@@ -86,8 +93,14 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
+<<<<<<< HEAD
       <find>showQ</find>
       <find>jsonReader</find>
+=======
+      <find>glad</find>
+      <find>null</find>
+
+>>>>>>> 0a36e90b0372b57f2ff27ee32b348abc029157fa
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -262,15 +275,20 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32974428" />
+<<<<<<< HEAD
       <window_info anchor="bottom" id="Run" order="2" weight="0.22826087" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39973083" />
+=======
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3551674" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39943343" />
+>>>>>>> 0a36e90b0372b57f2ff27ee32b348abc029157fa
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32974428" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.32974428" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.3286119" />
       <window_info anchor="bottom" id="Build" order="11" weight="0.32974428" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -413,6 +431,17 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/README.md" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/quotes/AppTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27744">
+          <caret line="1632" column="27" selection-start-line="1632" selection-start-column="27" selection-end-line="1632" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> 0a36e90b0372b57f2ff27ee32b348abc029157fa
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">

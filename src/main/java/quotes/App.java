@@ -8,9 +8,10 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Random;
+import java.util.concurrent.locks.ReadWriteLock;
 
 public class App {
-
+  
     public static void main(String[] args) {
         //quotes from API
         String apiURL = "https://ron-swanson-quotes.herokuapp.com/v2/quotes";
@@ -92,12 +93,6 @@ public class App {
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-        } finally {
-            try {
-                reader.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
         return null;
     }
@@ -108,3 +103,4 @@ public class App {
     }
 
 }
+
