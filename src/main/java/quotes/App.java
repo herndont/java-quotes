@@ -14,96 +14,62 @@ import java.util.Random;
 import java.util.concurrent.locks.ReadWriteLock;
 
 public class App {
+  
+    public static void main(String[] args) {
+        //quotes from file
+        Quote showQuote = jsonReader();
+        System.out.println(showQuote);
+        //quotes from API
+        String apiURL = "https://ron-swanson-quotes.herokuapp.com/v2/quotes";
 
-    public static void main(String[] args) throws MalformedURLException {
-        String apiURL = "https://ron-swanson-quotes.herokuapp.com/v2/quotes?json";
+        try {
+            URL url = new URL(apiURL);
+            String json = getRonJson(url);
+//                 RSwanson showRon = getRonSwan(json);
+//                 System.out.println(showRon);
 
-            try {
-                URL url = new URL(apiURL);
-                String json = getRonJson(url);
-                 RSwanson showRon = getRonSwan(json);
-                 System.out.println(showRon);
-
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-                System.out.println("malformed URL");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-//redundant catch (see MalformedURLException)
-//            catch (IOException e) {
-//                e.printStackTrace();
-//                System.out.println("API issues");
-//            }
-//        Quote showQuote = jsonReader();
-//        System.out.println(showQuote);
-//
-    }
-
-    //need to write a method to read the quotes file
-//    public static Quote jsonReader() {
-//        BufferedReader reader = null;
-//        try {
-//            reader = new BufferedReader(new FileReader("quotes.json"));
-//            Gson gson = new Gson();
-//            Quote[] resultingQuote = gson.fromJson(reader, Quote[].class);
-//
-//            Random rand = new Random();
-//            int num = rand.nextInt(resultingQuote.length);
-//            return resultingQuote[num];
-//
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//        finally{
-//            try {
-//                reader.close();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//    }
-//        return null;
-//    }
-    public static RSwanson getRonSwan(String json) {
-        Gson gson = new Gson();
-        System.out.println(json);
-        RSwanson ronSwanson = gson.fromJson(json, RSwanson.class);
-        return ronSwanson;
-    }
-
-        public static String getRonJson(URL url) throws IOException{
-
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-
-            try{
-                connection.setRequestMethod("GET");
-
-                int status = connection.getResponseCode();
-
-                if (status == 200) {
-                    try (BufferedReader reader = useConnectedBufferedReader(connection)) {
-//                        String contents = "";
-//                        String currentLine = reader.readLine();
-//                        while (currentLine != null) {
-//                            contents = contents + currentLine;
-//                            currentLine = reader.readLine();
-//                        }
-//                        System.out.println(contents);
-                       return getBufferedReaderData(reader);
-                    }
-                    catch (IOException e) {
-                        return "something went wrong";
-                    }
-                } else {
-                    System.out.println("Current status:" + status);
-                    return null;
-                }
-            } finally {
-                connection.disconnect();
-            }
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+            System.out.println("malformed URL");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-//buffered reader connection
+    }
 
+
+    public static String getRonJson(URL url) throws IOException{
+
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+
+        try{
+            connection.setRequestMethod("GET");
+
+            int status = connection.getResponseCode();
+
+            if (status == 200) {
+                try (BufferedReader reader = useConnectedBufferedReader(connection)) {
+                    String contents = "";
+                    String currentLine = reader.readLine();
+                    while (currentLine != null) {
+                        contents = contents + currentLine;
+                        currentLine = reader.readLine();
+                    }
+                    System.out.println("Ron Swanson once said: " + contents);
+                    return getBufferedReaderData(reader);
+                }
+                catch (IOException e) {
+                    return "something went wrong";
+                }
+            } else {
+                System.out.println("Current status:" + status);
+                return null;
+            }
+        } finally {
+            connection.disconnect();
+        }
+    }
+
+    //buffered reader connection
     public static BufferedReader useConnectedBufferedReader(HttpURLConnection connection) throws IOException {
         InputStream inputStream = connection.getInputStream();
         InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
@@ -120,4 +86,38 @@ public class App {
         }
         return builder.toString();
     }
+
+    //quotes from json file
+    public static Quote jsonReader() {
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(new FileReader("quotes.json"));
+            Gson gson = new Gson();
+            Quote[] resultingQuote = gson.fromJson(reader, Quote[].class);
+
+            Random rand = new Random();
+            int num = rand.nextInt(resultingQuote.length);
+            return resultingQuote[num];
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        finally{
+            try {
+                URL url = new URL(apiURL);
+                String json = getRonJson(url);
+                 RSwanson showRon = getRonSwan(json);
+                 System.out.println(showRon);
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+                System.out.println("malformed URL");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
+    //buffered writer??
 }
