@@ -4,43 +4,36 @@
 package quotes;
 
 import com.google.gson.Gson;
-
-//import java.lang.annotation.Annotation;
 import java.io.*;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Random;
 
 public class App {
 
     public static void main(String[] args) {
-        //quotes from file
-        Quote showQuote = jsonReader();
-        System.out.println(showQuote);
         //quotes from API
         String apiURL = "https://ron-swanson-quotes.herokuapp.com/v2/quotes";
 
-        try {
-            URL url = new URL(apiURL);
-            String json = getRonJson(url);
-//                 RSwanson showRon = getRonSwan(json);
-//                 System.out.println(showRon);
+        String jsonFromAPI = getRonJsonFromAPI(apiURL);
 
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-            System.out.println("malformed URL");
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (jsonFromAPI == null) {
+            //quotes from file
+            Quote showQuote = getJsonFromFile();
+            System.out.println(showQuote);
+        } else {
+            //TODO this is where we need to call the printRonToFile method once we figure out how to write the method
+            System.out.println(jsonFromAPI);
         }
+
     }
 
 
-    public static String getRonJson(URL url) throws IOException{
+    public static String getRonJsonFromAPI(String ronurl) {
+        try {
+            URL url = new URL(ronurl);
 
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-
-        try{
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
 
             int status = connection.getResponseCode();
@@ -53,19 +46,18 @@ public class App {
                         contents = contents + currentLine;
                         currentLine = reader.readLine();
                     }
-                    System.out.println("Ron Swanson once said: " + contents);
-                    return getBufferedReaderData(reader);
-                }
-                catch (IOException e) {
-                    return "something went wrong";
+                    connection.disconnect();
+                    return ("Ron Swanson once said: " + contents);
+                } catch (IOException e) {
+                    System.out.println("something went wrong");
                 }
             } else {
                 System.out.println("Current status:" + status);
-                return null;
             }
-        } finally {
-            connection.disconnect();
+        } catch (Exception e) {
+            System.out.println("Ron Swanson Connection Failed. Too bad, so sad.");
         }
+        return null;
     }
 
     //buffered reader connection
@@ -87,7 +79,7 @@ public class App {
     }
 
     //quotes from json file
-    public static Quote jsonReader() {
+    public static Quote getJsonFromFile() {
         BufferedReader reader = null;
         try {
             reader = new BufferedReader(new FileReader("quotes.json"));
@@ -100,8 +92,7 @@ public class App {
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-        }
-        finally{
+        } finally {
             try {
                 reader.close();
             } catch (IOException e) {
@@ -111,5 +102,9 @@ public class App {
         return null;
     }
 
-    //buffered writer??
+    public static void printRonToFile(String e) {
+        Gson gson = new Gson();
+        String json =gson.toJson(e);
+    }
+
 }
