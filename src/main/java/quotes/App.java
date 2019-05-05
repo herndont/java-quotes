@@ -11,9 +11,10 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Random;
+import java.util.concurrent.locks.ReadWriteLock;
 
 public class App {
-
+  
     public static void main(String[] args) {
         //quotes from file
         Quote showQuote = jsonReader();
@@ -103,7 +104,14 @@ public class App {
         }
         finally{
             try {
-                reader.close();
+                URL url = new URL(apiURL);
+                String json = getRonJson(url);
+                 RSwanson showRon = getRonSwan(json);
+                 System.out.println(showRon);
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+                System.out.println("malformed URL");
             } catch (IOException e) {
                 e.printStackTrace();
             }
