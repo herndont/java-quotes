@@ -8,10 +8,9 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Random;
-import java.util.concurrent.locks.ReadWriteLock;
 
 public class App {
-  
+
     public static void main(String[] args) {
         //quotes from API
         String apiURL = "https://ron-swanson-quotes.herokuapp.com/v2/quotes";
@@ -96,8 +95,8 @@ public class App {
         }
         return null;
     }
-
-    public static void printRonToFile(String e) {
+//TODO this is going to be the saving ron to file method. Just need to figure out how to do it.
+    public static void saveRonToFile(String e) {
         Gson gson = new Gson();
         String json =gson.toJson(e);
     }
