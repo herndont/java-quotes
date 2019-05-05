@@ -7,17 +7,86 @@ import com.google.gson.Gson;
 
 //import java.lang.annotation.Annotation;
 import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Random;
 
 public class App {
 
     public static void main(String[] args) {
+        //quotes from file
         Quote showQuote = jsonReader();
         System.out.println(showQuote);
+        //quotes from API
+        String apiURL = "https://ron-swanson-quotes.herokuapp.com/v2/quotes";
 
+        try {
+            URL url = new URL(apiURL);
+            String json = getRonJson(url);
+//                 RSwanson showRon = getRonSwan(json);
+//                 System.out.println(showRon);
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+            System.out.println("malformed URL");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    //need to write a method to read the quotes file
+
+    public static String getRonJson(URL url) throws IOException{
+
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+
+        try{
+            connection.setRequestMethod("GET");
+
+            int status = connection.getResponseCode();
+
+            if (status == 200) {
+                try (BufferedReader reader = useConnectedBufferedReader(connection)) {
+                    String contents = "";
+                    String currentLine = reader.readLine();
+                    while (currentLine != null) {
+                        contents = contents + currentLine;
+                        currentLine = reader.readLine();
+                    }
+                    System.out.println("Ron Swanson once said: " + contents);
+                    return getBufferedReaderData(reader);
+                }
+                catch (IOException e) {
+                    return "something went wrong";
+                }
+            } else {
+                System.out.println("Current status:" + status);
+                return null;
+            }
+        } finally {
+            connection.disconnect();
+        }
+    }
+
+    //buffered reader connection
+    public static BufferedReader useConnectedBufferedReader(HttpURLConnection connection) throws IOException {
+        InputStream inputStream = connection.getInputStream();
+        InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+        BufferedReader reader = new BufferedReader(inputStreamReader);
+        return reader;
+    }
+
+    public static String getBufferedReaderData(BufferedReader reader) throws IOException {
+        StringBuilder builder = new StringBuilder();
+        String currentLine = reader.readLine();
+        while (currentLine != null) {
+            builder.append(currentLine);
+            currentLine = reader.readLine();
+        }
+        return builder.toString();
+    }
+
+    //quotes from json file
     public static Quote jsonReader() {
         BufferedReader reader = null;
         try {
@@ -38,7 +107,9 @@ public class App {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-    }
+        }
         return null;
     }
+
+    //buffered writer??
 }
