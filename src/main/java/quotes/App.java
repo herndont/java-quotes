@@ -47,7 +47,7 @@ public class App {
                         currentLine = reader.readLine();
                     }
                     connection.disconnect();
-                    return ("Ron Swanson once said: " + contents);
+                    return ("Famed theologian, Ron Swanson once said: " + contents);
                 } catch (IOException e) {
                     System.out.println("something went wrong");
                 }
@@ -96,9 +96,11 @@ public class App {
         return null;
     }
 //TODO this is going to be the saving ron to file method. Just need to figure out how to do it.
-    public static void saveRonToFile(String e) {
+    public static void saveRonToFile(String RSwanson) {
         Gson gson = new Gson();
-        String json =gson.toJson(e);
+        String json =gson.toJson(RSwanson);
+
+
     }
 
 }
