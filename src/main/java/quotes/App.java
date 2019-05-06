@@ -117,9 +117,10 @@ public class App {
             Quote quote = new Quote(new String[0], "Ron Swanson", "", RSwanson);
             list.add(quote);
             //replacing existing file with the array plus Ron
-            Writer writer = new FileWriter("quotes.json");
-            String json = gson.toJson(quote);
+            Writer writer = new OutputStreamWriter(new FileOutputStream("quotes.json"), "UTF-8");
+            String json = gson.toJson(list);
             writer.write(json);
+            writer.close();
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Something went terribly wrong. Turn off your computer before it blows!");
