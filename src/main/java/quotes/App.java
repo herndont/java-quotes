@@ -4,10 +4,19 @@
 package quotes;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
+
+import static java.nio.charset.StandardCharsets.ISO_8859_1;
+import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class App {
 
@@ -22,7 +31,7 @@ public class App {
             Quote showQuote = getJsonFromFile();
             System.out.println(showQuote);
         } else {
-            //TODO this is where we need to call the printRonToFile method once we figure out how to write the method
+            saveRonToFile(jsonFromAPI);
             System.out.println(jsonFromAPI);
         }
 
@@ -47,7 +56,7 @@ public class App {
                         currentLine = reader.readLine();
                     }
                     connection.disconnect();
-                    return ("Famed theologian, Ron Swanson once said: " + contents);
+                    return contents;
                 } catch (IOException e) {
                     System.out.println("something went wrong");
                 }
@@ -95,13 +104,26 @@ public class App {
         }
         return null;
     }
-//TODO this is going to be the saving ron to file method. Just need to figure out how to do it.
     public static void saveRonToFile(String RSwanson) {
-        Gson gson = new Gson();
-        String json =gson.toJson(RSwanson);
+        try {
+            //Reading the json file to get existing array of quotes
+            BufferedReader reader = new BufferedReader(new FileReader("quotes.json"));
+            Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
+            Quote[] existingQuote = gson.fromJson(reader, Quote[].class);
 
-
+            //adding Ron quote to the existing file
+            List list = new ArrayList<Quote>();
+            list.addAll(Arrays.asList(existingQuote));
+            Quote quote = new Quote(new String[0], "Ron Swanson", "", RSwanson);
+            list.add(quote);
+            //replacing existing file with the array plus Ron
+            Writer writer = new FileWriter("quotes.json");
+            String json = gson.toJson(quote);
+            writer.write(json);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Something went terribly wrong. Turn off your computer before it blows!");
+        }
     }
-
 }
 
